@@ -1,0 +1,14 @@
+:root {
+  --bg: #0b1220;
+  --card: #111a2b;
+  --text: #e8eefc;
+  --muted: #a8b3c7;
+  --accent: #5b9dff;
+  --danger: #ff6b6b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: sans-serif; color: var(--text); background: var(--bg); }
+.container { max-width: 700px; margin: 40px auto; padding: 0 16px; }
+.card { background: var(--card); border-radius: 10px; padding: 15px; margin-bottom: 15px; }
+button { background: var(--accent); color: #fff; border: none; padding: 10px; border-radius: 8px; cursor: pointer; }
+.error { background: var(--danger); color: white; padding: 10px; border-radius: 8px; }

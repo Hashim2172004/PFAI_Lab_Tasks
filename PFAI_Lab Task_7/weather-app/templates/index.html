@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" class="card form">
+  <label>
+    City
+    <input type="text" name="city" placeholder="e.g., Seattle, London" required />
+  </label>
+  <label>
+    Units
+    <select name="units">
+      <option value="metric" {% if units == "metric" %}selected{% endif %}>Metric (°C)</option>
+      <option value="imperial" {% if units == "imperial" %}selected{% endif %}>Imperial (°F)</option>
+    </select>
+  </label>
+  <button type="submit">Get Weather</button>
+</form>
+
+{% if error %}
+  <div class="card error">{{ error }}</div>
+{% endif %}
+
+{% if weather %}
+  <div class="card weather">
+    <h2>{{ weather.city }}</h2>
+    <p class="desc">
+      <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="{{ weather.desc }}" width="60" height="60">
+      {{ weather.desc }}
+    </p>
+    <p class="temp">{{ weather.temp }}{{ weather.units_symbol }}</p>
+    <p>Feels like: <strong>{{ weather.feels }}{{ weather.units_symbol }}</strong></p>
+    <p>Humidity: <strong>{{ weather.humidity }}%</strong></p>
+    <p>Wind: <strong>{{ weather.wind }} {% if weather.units == 'metric' %}m/s{% else %}mph{% endif %}</strong></p>
+  </div>
+{% endif %}
+{% endblock %}
